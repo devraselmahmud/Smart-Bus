@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { UserService } from '../../services/user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from '../../services/user.service';
 })
 export class SignupComponent {
 
-  constructor(private service: UserService) {}
+  constructor(private service: UserService,
+              private router: Router) {}
 
   form = new FormGroup({});
   model: any = {};
@@ -66,10 +68,10 @@ export class SignupComponent {
   onSubmit(model: any) {
     this.service.signup(model).subscribe({
       next: () => {
-        alert('Signup Successfully!');
+        this.router.navigate(['/login']);
       },
       error: (err: any) => {
-        alert(err);
+        console.error(err);
       }
     });
   }
