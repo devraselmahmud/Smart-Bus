@@ -1,57 +1,26 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss'], // Fixed typo
 })
 export class LoginComponent {
+  selectedRole: string = 'student'; // Default role
+  showUsername: boolean = false; // Show/Hide Username field
+  username: string = '';
+  email: string = '';
+  password: string = '';
 
-  constructor(private service: UserService) {}
+  toggleFields() {
+    this.showUsername = this.selectedRole === 'admin' || this.selectedRole === 'driver';
+  }
 
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = [
-    {
-      fieldGroupClassName: 'row',
-      fieldGroup: [
-        {
-          className: 'col-md-6',
-          key: 'email',
-          type: 'input',
-          props: {
-            label: 'Email',
-            placeholder: 'Email',
-            required: true,
-          },
-        },
-        {
-          className: 'col-md-6',
-          key: 'password',
-          type: 'input',
-          props: {
-            label: 'Password',
-            placeholder: 'Password',
-            required: true,
-          },
-        },
-      ]
-    }
-];
-
-onSubmit(model: any) {
-  this.service.login(model).subscribe({
-    next: () => {
-      alert('Login Successfully!');
-    },
-    error: (err: any) => {
-      alert(err);
-    }
-  });
-}
-
+  onSubmit() {
+    console.log('Form Submitted');
+    console.log('Role:', this.selectedRole);
+    console.log('Username:', this.username);
+    console.log('Email:', this.email);
+    console.log('Password:', this.password);
+  }
 }
