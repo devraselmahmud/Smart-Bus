@@ -7,12 +7,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
+import { UploadExcelComponent } from './components/components/upload-excel/upload-excel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    UploadExcelComponent,
   ],
   imports: [
     BrowserModule,
