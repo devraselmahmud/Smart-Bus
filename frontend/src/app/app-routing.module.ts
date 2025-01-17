@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'upload-excel', component: UploadExcelComponent },
   { path: 'location', component: LocationComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
