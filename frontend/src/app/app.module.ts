@@ -7,7 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { UploadExcelComponent } from './components/components/upload-excel/upload-excel.component';
+import { UploadExcelComponent } from './components/upload-excel/upload-excel.component';
+import { LocationComponent } from './components/location/location.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UploadExcelComponent } from './components/components/upload-excel/uploa
     LoginComponent,
     SignupComponent,
     UploadExcelComponent,
+    LocationComponent,
   ],
   imports: [
     BrowserModule,
