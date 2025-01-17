@@ -5,7 +5,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'], // Fixed typo
 })
 export class AppComponent {
   title = 'frontend';
@@ -57,12 +57,11 @@ export class AppComponent {
             required: true,
           },
         },
-      ]
-    }
-]; 
+      ],
+    },
+  ];
 
-  onSubmit(model: any) {
+  onSubmit() {
     console.log(this.model);
   }
-
 }

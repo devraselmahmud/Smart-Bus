@@ -1,0 +1,64 @@
+<div class="container mx-auto max-w-4xl mt-10 p-6 bg-gray-100 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      Upload Excel File
+    </h1>
+    <form class="space-y-4">
+      <div class="flex flex-col space-y-2">
+        <label
+          for="excelFile"
+          class="text-gray-700 text-lg font-medium"
+        >
+          Select Excel File:
+        </label>
+        <input
+          type="file"
+          id="excelFile"
+          accept=".xlsx, .xls"
+          (change)="onFileChange($event)"
+          class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm text-gray-700 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+        />
+      </div>
+      <button
+        type="button"
+        (click)="uploadToDatabase()"
+        class="w-full px-6 py-3 text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition duration-200"
+        [disabled]="excelData.length === 0"
+      >
+        Upload to Database
+      </button>
+    </form>
+  
+    <div *ngIf="excelData.length > 0" class="mt-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+        Preview Data:
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-200">
+              <th
+                *ngFor="let header of excelData[0] | keyvalue"
+                class="px-4 py-2 text-left text-sm font-medium text-gray-600"
+              >
+                {{ header.key }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let row of excelData"
+              class="border-t border-gray-300 hover:bg-gray-100"
+            >
+              <td
+                *ngFor="let value of row | keyvalue"
+                class="px-4 py-2 text-sm text-gray-800"
+              >
+                {{ value.value }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
